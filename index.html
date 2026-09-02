@@ -145,7 +145,7 @@
 
         <div class="about-cards reveal" data-reveal="fade-left">
           <div class="about-photo-card">
-            <img src="https://i.ibb.co/35xt7S3g/IMG-20260901-000505.jpg" alt="Portrait of Ansari Anas" loading="lazy" width="740" height="760">
+            <img src="assets/images/profile.jpg" alt="Portrait of Ansari Anas" loading="lazy" width="740" height="760">
           </div>
 
           <div class="info-card">
@@ -525,31 +525,69 @@
             <span class="contact-value">India · Available for Remote / On-site</span>
           </div>
         </div>
+<form 
+  class="contact-form reveal" 
+  data-reveal="fade-left" 
+  id="contactForm"
+  action="https://formspree.io/f/xaeyjnaw"
+  method="POST"
+>
 
-        <!-- Frontend-only form: no backend is connected. Wire the "submitContactForm"
-             handler in js/script.js to your form service (Formspree, EmailJS, a serverless
-             function, etc.) to actually deliver messages. -->
-        <form class="contact-form reveal" data-reveal="fade-left" id="contactForm" novalidate>
-          <div class="form-field">
-            <input type="text" id="cf-name" name="name" placeholder=" " required>
-            <label for="cf-name">Your name</label>
-            <span class="form-error" id="cf-name-error"></span>
-          </div>
-          <div class="form-field">
-            <input type="email" id="cf-email" name="email" placeholder=" " required>
-            <label for="cf-email">Your email</label>
-            <span class="form-error" id="cf-email-error"></span>
-          </div>
-          <div class="form-field">
-            <textarea id="cf-message" name="message" rows="5" placeholder=" " required></textarea>
-            <label for="cf-message">Message</label>
-            <span class="form-error" id="cf-message-error"></span>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit" data-cursor-hover>
-            <span class="btn-label">Send Message</span>
-          </button>
-          <p class="form-success" id="formSuccess" role="status" aria-live="polite">Thanks — your message is ready. Connect a form service to deliver it automatically.</p>
-        </form>
+  <div class="form-field">
+    <input
+      type="text"
+      id="cf-name"
+      name="name"
+      placeholder=" "
+      required
+    >
+    <label for="cf-name">Your name</label>
+    <span class="form-error" id="cf-name-error"></span>
+  </div>
+
+  <div class="form-field">
+    <input
+      type="email"
+      id="cf-email"
+      name="email"
+      placeholder=" "
+      required
+    >
+    <label for="cf-email">Your email</label>
+    <span class="form-error" id="cf-email-error"></span>
+  </div>
+
+  <div class="form-field">
+    <textarea
+      id="cf-message"
+      name="message"
+      rows="5"
+      placeholder=" "
+      required
+    ></textarea>
+    <label for="cf-message">Message</label>
+    <span class="form-error" id="cf-message-error"></span>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary form-submit"
+    data-cursor-hover
+  >
+    <span class="btn-label">Send Message</span>
+  </button>
+
+  <p
+    class="form-success"
+    id="formSuccess"
+    role="status"
+    aria-live="polite"
+  >
+    Thanks! Your message has been sent successfully.
+  </p>
+
+</form>
+
       </div>
     </div>
   </section>
