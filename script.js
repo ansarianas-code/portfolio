@@ -353,18 +353,31 @@
       var submitBtn = form.querySelector(".form-submit");
       submitBtn.classList.add("is-loading");
 
-      /* This form has no backend connected — it only validates on the client.
-         Replace this timeout with a real request (e.g. fetch() to Formspree,
-         EmailJS, or your own serverless endpoint) to actually send messages. */
-      setTimeout(function(){
-        submitBtn.classList.remove("is-loading");
-        success.classList.add("is-shown");
-        form.reset();
-        fields.forEach(function(f){
-          f.input.closest(".form-field").classList.remove("has-error");
-          f.error.textContent = "";
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function(response){
+          if(!response.ok) throw new Error("Formspree request failed");
+          return response.json();
+        })
+        .then(function(){
+          success.textContent = "Thanks! Your message has been sent successfully.";
+          success.classList.add("is-shown");
+          form.reset();
+          fields.forEach(function(f){
+            f.input.closest(".form-field").classList.remove("has-error");
+            f.error.textContent = "";
+          });
+        })
+        .catch(function(){
+          success.textContent = "Sorry, your message could not be sent. Please try again or email me directly.";
+          success.classList.add("is-shown");
+        })
+        .finally(function(){
+          submitBtn.classList.remove("is-loading");
         });
-      }, 900);
     });
   }
 
